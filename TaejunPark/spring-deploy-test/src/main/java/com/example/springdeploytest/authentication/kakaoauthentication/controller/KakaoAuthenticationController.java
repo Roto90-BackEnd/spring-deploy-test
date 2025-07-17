@@ -1,11 +1,10 @@
 package com.example.springdeploytest.authentication.kakaoauthentication.controller;
 
-
+import com.example.springdeploytest.authentication.kakaoauthentication.controller.response_form.KakaoUserInfoResponseForm;
 import com.example.springdeploytest.authentication.kakaoauthentication.service.KakaoAuthenticationService;
-import jakarta.servlet.http.HttpServletResponse;
+import com.example.springdeploytest.authentication.kakaoauthentication.service.response.KakaoUserInfoResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,11 +21,11 @@ public class KakaoAuthenticationController {
     final private KakaoAuthenticationService kakaoAuthenticationService;
 
     @GetMapping("/login")
-    public String requestLogin(@RequestParam("code") String code,
-                               HttpServletResponse response) throws IOException {
+    public KakaoUserInfoResponseForm requestLogin(@RequestParam("code") String code) throws IOException {
         log.info("requestLogin(): code {}", code);
-//        log.info("requestLogin(): response {}", kakaoAuthenticationService.handleLogin(code));
-        return kakaoAuthenticationService.handleLogin(code);
+
+        KakaoUserInfoResponse response = kakaoAuthenticationService.handleLogin(code);
+        return KakaoUserInfoResponseForm.from(response);
 
     }
 }

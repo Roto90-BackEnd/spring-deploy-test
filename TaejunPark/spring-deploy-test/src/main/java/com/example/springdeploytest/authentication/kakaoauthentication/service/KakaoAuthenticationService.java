@@ -1,8 +1,10 @@
 package com.example.springdeploytest.authentication.kakaoauthentication.service;
 
 
+import com.example.springdeploytest.authentication.kakaoauthentication.service.response.KakaoUserInfoResponse;
+
 public interface KakaoAuthenticationService {
-    String handleLogin(String code);
+    KakaoUserInfoResponse handleLogin(String code);
 
 
 
