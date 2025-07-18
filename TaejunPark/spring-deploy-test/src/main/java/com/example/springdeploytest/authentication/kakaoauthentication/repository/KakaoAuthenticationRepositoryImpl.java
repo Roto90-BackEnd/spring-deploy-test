@@ -22,10 +22,10 @@ public class KakaoAuthenticationRepositoryImpl implements KakaoAuthenticationRep
     private final RestTemplate restTemplate;
 
     public KakaoAuthenticationRepositoryImpl(
-            @Value("${KAKAO_CLIENT_ID}") String clientId,
-            @Value("${KAKAO_REDIRECT_URI}") String redirectUri,
-            @Value("${KAKAO_TOKEN_REQUEST_URI}") String tokenRequestUri,
-            @Value("${KAKAO_USER_INFO_REQUEST_URI}") String userInfoRequestUri,
+            @Value("${kakao.client-id}") String clientId,
+            @Value("${kakao.redirect-uri}") String redirectUri,
+            @Value("${kakao.token-request-uri}") String tokenRequestUri,
+            @Value("${kakao.user-info-request-uri}") String userInfoRequestUri,
             RestTemplate restTemplate) {
 
         this.clientId = clientId;
